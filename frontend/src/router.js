@@ -1,13 +1,15 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
+import Layout from 'components/Layout'
 import Inbox from './pages/Inbox'
 
 const App = () => (
     <Router>
-        <Switch>
-            <Route path="/" component={Inbox} />
-        </Switch>
+        <Layout>
+            <Switch>
+                <Route path="/" component={Inbox} />
+            </Switch>
+        </Layout>
     </Router>)
 
 export default App

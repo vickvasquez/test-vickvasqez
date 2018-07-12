@@ -27,14 +27,21 @@ module.exports = {
             use: [
                 { loader: 'style-loader' },
                 { loader: 'css-loader' },
-                { loader: 'sass-loader' },
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        includePaths: ['frontend/src/styles']
+                            .map(d => path.join(__dirname, d)),
+                    },
+                },
             ],
         }],
     },
     plugins: [htmlWebpackPlugin],
     resolve: {
         alias: {
-            components: './frontend/src/components',
+            components: path.resolve(__dirname, './frontend/src/components'),
+            '~base': path.resolve(__dirname, './frontend/src'),
         },
         extensions: ['.js', '.jsx'],
     },

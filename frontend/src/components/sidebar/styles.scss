@@ -1,0 +1,49 @@
+@import 'colors';
+@import 'tipografias';
+
+.container__sidebar {
+    background: $white;
+    border-right: 1px solid $blue-bg;
+    box-shadow: 0 0 40px $shadow;
+    max-height: 90vh;
+    height: 90vh;
+    position: relative;
+    width: 30%;
+}
+
+.card {
+    background: $blue-bg;
+    border-left: 4px solid $blue;
+    border-bottom: 1px solid darken($gray, 20);
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+}
+
+.card--readed {
+    background: $white;
+}
+
+.card__title,
+.card__content {
+    color: $blue;
+    font-size: $font-size
+}
+.card__icon,
+.card__content {
+    color: $font-color;
+    margin-top: .4rem;
+}
+.card__content::first-letter {
+    text-transform: capitalize;
+}
+
+.card__date,
+.card__icon {
+    color: darken($gray, 50);
+}

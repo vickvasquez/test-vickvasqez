@@ -33,7 +33,7 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             data: state.data.concat(action.data),
-            loading: !state.loading,
+            loading: false,
         }
     case FETCHING_DATA:
         return {

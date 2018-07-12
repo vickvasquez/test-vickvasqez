@@ -14,11 +14,13 @@ const Sidebar = ({ data }) => (
     <div className="container__sidebar">
         <HeaderSidebar />
         <SearchBox />
-        {
-            data.map(email => (
-                <SidebarItem {...email} key={Math.random()} />
-            ))
-        }
+        <div className="container__emails">
+            {
+                data.map(email => (
+                    <SidebarItem {...email} key={Math.random()} />
+                ))
+            }
+        </div>
     </div>
 )
 Sidebar.propTypes = propTypes

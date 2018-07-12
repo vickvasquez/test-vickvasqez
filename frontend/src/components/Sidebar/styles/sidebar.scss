@@ -2,11 +2,16 @@
     background: $white;
     border-right: 1px solid $blue-bg;
     box-shadow: 0 0 40px $shadow;
+    border-radius: 4px 0 0 4px;
     max-height: 90vh;
     height: 90vh;
-    overflow-y: auto;
     position: relative;
+    overflow: hidden;
     width: 30%;
+}
+
+.container__emails {
+    overflow-y: auto;
 }
 
 .card {

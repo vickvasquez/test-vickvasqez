@@ -5,12 +5,12 @@ import Sidebar from 'components/Sidebar'
 // import Sidebar from 'components/sidebar'
 
 const propTypes = {
-    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    emails: PropTypes.arrayOf(PropTypes.object).isRequired,
     loading: PropTypes.bool.isRequired,
     error: PropTypes.bool.isRequired,
 }
 
-const Inbox = ({ data, loading, error }) => (
+const Inbox = ({ emails, loading, error }) => (
     <React.Fragment>
         {
             loading && <p> Cargando emails </p>
@@ -19,7 +19,7 @@ const Inbox = ({ data, loading, error }) => (
             error && <p> Sucedió un error al cargar los datos </p>
         }
         {
-            data.length && <Sidebar data={data} />
+            (emails && emails.length) && <Sidebar data={emails} />
 
         }
     </React.Fragment>

@@ -5,3 +5,10 @@ export const NEW_DATA = 'NEW_DATA'
 export const MARK_AS_READ = 'MARK_AS_READ'
 export const MARK_AS_SPAM = 'MARK_AS_SPAM'
 export const DELETE_EMAIL = 'DELETE_EMAIL'
+export const FILTER_BY = 'FILTER_BY'
+
+export const filters = {
+    INBOX: 'INBOX',
+    SPAM: 'SPAM',
+    DELETED: 'DELETED',
+}

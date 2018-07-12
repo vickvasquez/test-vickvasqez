@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import './styles.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperclip } from '@fortawesome/free-solid-svg-icons'
 
 const propTypes = {
     subject: PropTypes.string.isRequired,
@@ -20,10 +21,16 @@ const SidebarItem = ({
                 <h2 className="card__title"> {subject}</h2>
                 <p className="card__content"> { body.substring(0, 30)} </p>
             </div>
-            <div className="card__rigth">
+            <div className="card__right">
                 <p className="card__date"> {date}</p>
                 {
-                    (attachements && attachements.length) && <p className="card__icon">icono</p>
+                    (attachements && attachements.length)
+                        && (
+                            <FontAwesomeIcon
+                                style={{ marginTop: '.7rem' }}
+                                icon={faPaperclip}
+                            />
+                        )
                 }
             </div>
         </div>

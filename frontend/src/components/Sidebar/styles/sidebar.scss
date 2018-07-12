@@ -1,12 +1,10 @@
-@import 'colors';
-@import 'tipografias';
-
 .container__sidebar {
     background: $white;
     border-right: 1px solid $blue-bg;
     box-shadow: 0 0 40px $shadow;
     max-height: 90vh;
     height: 90vh;
+    overflow-y: auto;
     position: relative;
     width: 30%;
 }
@@ -14,7 +12,7 @@
 .card {
     background: $blue-bg;
     border-left: 4px solid $blue;
-    border-bottom: 1px solid darken($gray, 20);
+    border-bottom: 1px solid darken($gray, 8);
     padding: 1rem;
     display: flex;
     flex-direction: row;
@@ -29,21 +27,24 @@ a {
     background: $white;
 }
 
+.card__right {
+    text-align: right
+}
+
 .card__title,
 .card__content {
     color: $blue;
     font-size: $font-size
 }
-.card__icon,
+
 .card__content {
     color: $font-color;
-    margin-top: .4rem;
+    margin-top: .7rem;
 }
 .card__content::first-letter {
     text-transform: capitalize;
 }
 
-.card__date,
-.card__icon {
+.card__date {
     color: darken($gray, 50);
 }

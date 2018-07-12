@@ -1,0 +1,16 @@
+.form__search {
+    border: 1px solid $gray;
+    padding: .7rem;
+    box-shadow: 1px 0 15px darken($gray,15);
+    width: 100%;
+}
+
+.input__search {
+    border: 0;
+    outline: 0;
+    width: 95%;
+    &:focus {
+        border: 0;
+        outline: 0;
+    }
+}

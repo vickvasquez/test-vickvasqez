@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Sidebar from 'components/sidebar'
+import Sidebar from 'components/Sidebar'
 
 // import Sidebar from 'components/sidebar'
 

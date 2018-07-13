@@ -3,9 +3,10 @@
 .container__header {
     background: transparent;
     border-bottom: 1px solid darken($gray,8);
-    padding: 1.5rem 1rem;
+    padding: 0 1rem;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    height: 70px;
     align-items: center;
 }

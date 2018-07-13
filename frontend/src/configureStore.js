@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
-import reducer from './reducer'
+import reducer from './reducers'
 
 export default (initalState) => {
     const middleware = applyMiddleware(thunk, logger)
@@ -12,9 +12,9 @@ export default (initalState) => {
     const store = createStore(reducer, initalState, composeEnhancers(middleware))
 
     if (module.hot) {
-        module.hot.accept('./reducer', () => {
+        module.hot.accept('./reducers', () => {
             // eslint-disable-next-line global-require
-            const nextRootReducer = require('./reducer')
+            const nextRootReducer = require('./reducers')
             store.replaceReducer(nextRootReducer)
         })
     }

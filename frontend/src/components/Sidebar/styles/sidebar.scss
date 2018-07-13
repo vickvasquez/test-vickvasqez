@@ -1,23 +1,13 @@
-.container__sidebar {
-    background: $white;
-    border-right: 1px solid $blue-bg;
-    box-shadow: 0 0 40px $shadow;
-    border-radius: 4px 0 0 4px;
-    max-height: 90vh;
-    height: 90vh;
-    position: relative;
-    overflow: hidden;
-    width: 30%;
-}
-
 .container__emails {
     overflow-y: auto;
+    height: 82%;
 }
 
 .card {
     background: $blue-bg;
     border-left: 4px solid $blue;
     border-bottom: 1px solid darken($gray, 8);
+    cursor: pointer;
     padding: 1rem;
     display: flex;
     flex-direction: row;
@@ -30,6 +20,7 @@ a {
 
 .card--readed {
     background: $white;
+    border-left: 0;
 }
 
 .card__right {
@@ -42,6 +33,11 @@ a {
     font-size: $font-size
 }
 
+.card--readed .card__title {
+    color: $font-color
+}
+
+
 .card__content {
     color: $font-color;
     margin-top: .7rem;
@@ -52,4 +48,22 @@ a {
 
 .card__date {
     color: darken($gray, 50);
+}
+
+.item-enter {
+  opacity: 0.01;
+}
+
+.item-enter.item-enter-active {
+  opacity: 1;
+  transition: opacity 600ms ease-in;
+}
+
+.item-leave {
+  opacity: 1;
+}
+
+.item-leave.item-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

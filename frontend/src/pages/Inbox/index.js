@@ -1,21 +1,62 @@
 import { connect } from 'react-redux'
 import Inbox from './Inbox'
+import {
+    setFilter,
+    markAsReaded,
+    fetchDetailEmail,
+} from '~base/actions/emails'
+import { fetchData } from '~base/actions/actionCreator'
 
-const filter = (emails, filterBy) => {
-    if (filterBy === 'INBOX') { return emails.filter(email => (!email.isSpam && !email.isDeleted)) }
-    if (filterBy === 'SPAM') return emails.filter(email => email.isSpam)
-    if (filterBy === 'DELETED') return emails.filter(email => email.isDeleted)
-    return emails
+const toggleFilter = (emails, filterBy) => {
+    if (filterBy === 'INBOX') {
+        const inbox = emails.filter(email => (!email.isSpam && !email.isDeleted))
+        const countInbox = inbox.filter(email => !email.isReaded).length
+        return [inbox, countInbox]
+    }
+    if (filterBy === 'SPAM') {
+        const inbox = emails.filter(email => email.isSpam)
+        const countInbox = inbox.filter(email => !email.isReaded).length
+
+        return [inbox, countInbox]
+    }
+    if (filterBy === 'DELETED') {
+        const inbox = emails.filter(email => email.isDeleted)
+        const countInbox = inbox.filter(email => !email.isReaded).length
+
+        return [inbox, countInbox]
+    }
+    return []
 }
 
 const mapStateToprops = (state) => {
-    const { data, loading, error } = state.inbox
-    const emails = filter(data, state.filter)
+    const {
+        data,
+        loading,
+        error,
+        isOpen,
+    } = state.list
+
+    const { filter } = state
+
+    const [emails, countInbox] = toggleFilter(data, filter)
+
     return {
-        emails, loading, error,
+        emails,
+        filter,
+        countInbox,
+        loading,
+        error,
+        isOpen,
     }
 }
 
-// const mapDispatchToProps = () => {}
+const mapDispatchToProps = dispatch => ({
+    setFilter: filter => dispatch(setFilter(filter)),
+    fetchData: () => dispatch(fetchData()),
+    detailEmail: (id) => {
+        dispatch(fetchDetailEmail(id))
+        dispatch(markAsReaded(id))
+    },
+})
 
-export default connect(mapStateToprops)(Inbox)
+export default connect(mapStateToprops, mapDispatchToProps)(Inbox)

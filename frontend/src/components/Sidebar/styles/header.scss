@@ -2,6 +2,11 @@
     font-size: $font-size * 1.4;
     display: inline-block;
     vertical-align: bottom;
+    text-transform: lowercase;
+}
+
+.title::first-letter {
+    text-transform: uppercase
 }
 
 .bell {
@@ -16,4 +21,5 @@
     line-height: 20px;
     display: inline-block;
     text-align: center;
+    transition: all ease-in 5s;
 }

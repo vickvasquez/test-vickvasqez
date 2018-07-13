@@ -1,9 +1,10 @@
 import { get } from 'axios'
-import { dataSucces, dataFail } from './actions'
+import { dataSucces, dataFail, loadData } from './emails'
 
 const API_BASE = 'http://localhost:3000'
 
-const fetchData = async (dispatch) => {
+const fetchData = () => async (dispatch) => {
+    dispatch(loadData())
     try {
         const emails = await get(`${ API_BASE }/emails`)
 
@@ -15,9 +16,13 @@ const fetchData = async (dispatch) => {
     }
 }
 
-const loadMoreData = (dispatch) => {
-    setInterval(async () => { await fetchData(dispatch) }, 10000)
+const loadMoreData = () => (dispatch) => {
+    setInterval(async () => {
+        await fetchData(dispatch)
+    },
+    10000)
 }
+
 export {
     fetchData,
     loadMoreData,

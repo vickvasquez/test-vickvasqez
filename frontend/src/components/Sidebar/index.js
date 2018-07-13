@@ -1,3 +1,9 @@
-import Sidebar from './Sidebar'
+import EmailList from './EmailList'
+import HeaderSidebar from './HeaderSidebar'
+import SearchBox from './SearchBox'
 
-export default Sidebar
+export {
+    EmailList,
+    HeaderSidebar,
+    SearchBox,
+}

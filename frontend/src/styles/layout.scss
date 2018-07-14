@@ -9,8 +9,7 @@
     //height: 90vh;
     box-sizing: border-box;
     position: relative;
-    max-width: 1280px;
-    width: 1072px;
+    max-width: 1073px;
 }
 
 .sidebar {
@@ -18,7 +17,6 @@
     border-right: 1px solid $blue-bg;
     box-shadow: 0 0 40px $shadow;
     border-radius: 4px 0 0 4px;
-    max-height: 90vh;
     height: 90vh;
     position: relative;
     overflow: hidden;
@@ -27,4 +25,24 @@
 
 .details {
     flex-basis: 60%;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 0;
+        width: 100%
+    }
+    .sidebar {
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .sidebar {
+        flex-basis: 100%;
+    }
+    .details {
+        flex-basis: 100%;
+        display: none;
+    }
 }

@@ -11,6 +11,11 @@ const propTypes = {
 const HeaderDetails = ({ markAsSpam, markAsUnRead, deleteEmail }) => (
     <Header>
         <div>
+            <button type="button" className="button button--toggle">
+                <span />
+                <span />
+                <span />
+            </button>
             <input
                 type="button"
                 className="button button--red"

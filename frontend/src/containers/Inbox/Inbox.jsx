@@ -5,7 +5,7 @@ import {
     HeaderSidebar,
     SearchBox,
 } from 'components/Sidebar'
-import Details from '~base/pages/Details'
+import Details from '~base/containers/Details'
 
 const propTypes = {
     emails: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -37,12 +37,12 @@ class Inbox extends PureComponent {
     }
 
     componentDidMount = async () => {
-        const { fetchData } = this.props
+        // const { fetchData } = this.props
 
-        this.timer = setInterval(async () => {
-            await fetchData()
-        },
-        90000)
+        // this.timer = setInterval(async () => {
+        //  await fetchData()
+        // },
+        // 90000)
     }
 
     componentWillUnmount() {

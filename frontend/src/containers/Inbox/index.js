@@ -35,9 +35,9 @@ const toggleFilter = (emails, filterBy) => {
         || email.subject.toLowerCase().includes(query)
         || email.tag.toLowerCase().includes(query)
     ))
-    const numberMatch = searchResult.length
+    // const numberMatch = searchResult.length
 
-    return [searchResult, numberMatch]
+    return [searchResult, 0]
 }
 
 const mapStateToprops = (state) => {

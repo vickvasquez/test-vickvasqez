@@ -11,7 +11,10 @@ const propTypes = {
 }
 
 const Details = ({
-    detail, markAsSpam, markAsUnRead, deleteEmail,
+    detail,
+    markAsSpam,
+    markAsUnRead,
+    deleteEmail,
 }) => (
     <div className="details">
         <HeaderDetails

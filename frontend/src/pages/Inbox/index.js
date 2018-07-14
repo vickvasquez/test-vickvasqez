@@ -4,6 +4,8 @@ import {
     setFilter,
     markAsReaded,
     fetchDetailEmail,
+    searchEmail,
+
 } from '~base/actions/emails'
 import { fetchData } from '~base/actions/actionCreator'
 
@@ -25,7 +27,17 @@ const toggleFilter = (emails, filterBy) => {
 
         return [inbox, countInbox]
     }
-    return []
+    const query = filterBy.toLowerCase()
+    const searchResult = emails.filter(email => (
+        email.from.toLowerCase().includes(query)
+        || email.body.toLowerCase().includes(query)
+        || email.to.toLowerCase().includes(query)
+        || email.subject.toLowerCase().includes(query)
+        || email.tag.toLowerCase().includes(query)
+    ))
+    const numberMatch = searchResult.length
+
+    return [searchResult, numberMatch]
 }
 
 const mapStateToprops = (state) => {
@@ -53,6 +65,7 @@ const mapStateToprops = (state) => {
 const mapDispatchToProps = dispatch => ({
     setFilter: filter => dispatch(setFilter(filter)),
     fetchData: () => dispatch(fetchData()),
+    searchEmail: query => dispatch(searchEmail(query)),
     detailEmail: (id) => {
         dispatch(fetchDetailEmail(id))
         dispatch(markAsReaded(id))

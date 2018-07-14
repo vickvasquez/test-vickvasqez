@@ -7,6 +7,7 @@ export const DELETE_EMAIL = 'DELETE_EMAIL'
 export const FILTER_BY = 'FILTER_BY'
 export const MARK_AS_READED = 'MARK_AS_READED'
 export const FETCH_DETAIL_EMAIL = ' FETCH_DETAIL_EMAIL'
+export const SEARCH = 'SEARCH'
 
 export const filters = {
     INBOX: 'INBOX',

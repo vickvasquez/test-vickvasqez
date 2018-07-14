@@ -9,16 +9,14 @@ import Details from '~base/pages/Details'
 
 const propTypes = {
     emails: PropTypes.arrayOf(PropTypes.object).isRequired,
-    loading: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
     countInbox: PropTypes.number.isRequired,
     filter: PropTypes.string.isRequired,
-    setFilter: PropTypes.func.isRequired, /*
-    markAsSpam: PropTypes.func.isRequired,
-    markAsUnRead: PropTypes.func.isRequired,
-    deleteEmail: PropTypes.func.isRequired, */
+    loading: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
     isOpen: PropTypes.bool,
+    setFilter: PropTypes.func.isRequired,
     detailEmail: PropTypes.func.isRequired,
+    searchEmail: PropTypes.func.isRequired,
     fetchData: PropTypes.func.isRequired,
     // loadMoreData: PropTypes.func.isRequired,
 }
@@ -58,6 +56,17 @@ class Inbox extends PureComponent {
         }
     }
 
+    searchEmail = (e) => {
+        e.preventDefault()
+        const { searchEmail } = this.props
+
+        // eslint-disable-next-line
+        const data = new FormData(e.target)
+
+        const query = data.get('query') || 'INBOX'
+        searchEmail(query)
+    }
+
     render() {
         const {
             emails,
@@ -77,7 +86,7 @@ class Inbox extends PureComponent {
                         title={filter}
                         setFilter={this.setFilter}
                     />
-                    <SearchBox />
+                    <SearchBox handleSubmit={this.searchEmail} />
                     {
                         loading && <p> Cargando emails </p>
                     }

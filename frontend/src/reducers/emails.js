@@ -8,15 +8,19 @@ import {
     MARK_AS_UNREAD,
     MARK_AS_SPAM,
     DELETE_EMAIL,
+    MARK_AS_READED,
+    SEARCH,
     filters,
 } from '~base/actions/constants'
-import { MARK_AS_READED } from '../actions/constants'
 
 const { INBOX } = filters
 
 const filter = (state = INBOX, action) => {
     if (action.type === FILTER_BY) {
         return action.filter
+    }
+    if (action.type === SEARCH) {
+        return action.query
     }
 
     return state

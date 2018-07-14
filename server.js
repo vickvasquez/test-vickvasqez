@@ -9,5 +9,5 @@ const PORT = process.env.PORT || 3000
 app.use(routers)
 
 app.listen(PORT, () => {
-    console.log(`Server running at port ${ PORT }`)
+    console.log(`Server running port: ${ PORT }`)
 })

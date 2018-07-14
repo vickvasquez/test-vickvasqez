@@ -38,6 +38,8 @@ module.exports = {
         }],
     },
     plugins: [htmlWebpackPlugin],
+    devtool: 'inline-source-map',
+
     resolve: {
         alias: {
             components: path.resolve(__dirname, './frontend/src/components'),

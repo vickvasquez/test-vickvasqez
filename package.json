@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --mode=development --inline --hot --progress",
+    "start": "webpack-dev-server --mode=development --inline --hot --progress --open",
+    "server": "node server",
     "build": "webpack-dev-server --mode=production"
   },
   "dependencies": {
@@ -43,6 +44,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-react": "^7.10.0",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.9.2",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",

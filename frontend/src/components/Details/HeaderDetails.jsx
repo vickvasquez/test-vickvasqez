@@ -6,12 +6,18 @@ const propTypes = {
     markAsSpam: PropTypes.func.isRequired,
     markAsUnRead: PropTypes.func.isRequired,
     deleteEmail: PropTypes.func.isRequired,
+    toggleSidebar: PropTypes.func.isRequired,
 }
 
-const HeaderDetails = ({ markAsSpam, markAsUnRead, deleteEmail }) => (
+const HeaderDetails = ({
+    markAsSpam,
+    markAsUnRead,
+    deleteEmail,
+    toggleSidebar,
+}) => (
     <Header>
         <div>
-            <button type="button" className="button button--toggle">
+            <button onClick={toggleSidebar} type="button" className="button button--toggle">
                 <span />
                 <span />
                 <span />

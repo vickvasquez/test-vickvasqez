@@ -1,50 +1,90 @@
 .slideRight {
-    animation: 1s slidein
+    animation: 1s slideRight forwards;
+
 }
-@-webkit-keyframes slidein {
+.slideLeft {
+    animation: 1s slideLeft
+}
+
+.slideRightDetail {
+    animation: 1s slideRightDetail forwards;
+}
+.slideLefttDetail {
+    animation: 1s slideLeftDetail forwards;
+}
+.opacity {
+    animation: 1s opacity forwards
+}
+
+@-webkit-keyframes slideRight {
     from {
-        margin-left: 100%;
-        width: 300%;
+        transform: translate(500px)
+    }
+    to {
+        transform: translate(0px)
+    }
+}
+
+@-moz-keyframes slideRight {
+    from {
+        transform: translate(0%)
+    }
+    to {
+        transform: translate(-200px)
+    }
+}
+    @-o-keyframes slideRight {
+    from {
+        transform: translate(500px)
+    }
+    to {
+        transform: translate(0px)
+    }
+}
+@keyframes slideLeft {
+    from {
+        transform: translate(-600px)
     }
 
     to {
-        margin-left: 0%;
-        width: 100%;
+        transform: translate(0)
     }
 }
 
-@-moz-keyframes slidein {
+@keyframes slideRight {
     from {
-        margin-left: 100%;
-        // width: 300%;
+        transform: translate(0)
     }
-
     to {
-        margin-left: 0%;
-        //width: 100%;
+        display: none;
+        transform: translate(-600px)
     }
 }
-    @-o-keyframes slidein {
+
+@keyframes slideRightDetail {
     from {
-        margin-left: 100%;
-        //width: 300%;
+        transform: translate(600px)
     }
-
     to {
-        margin-left: 0%;
-        //width: 100%;
+        transform: translate(0)
     }
 }
-    @keyframes slidein {
+@keyframes slideLeftDetail {
+    from {
+        transform: translate(0)
+    }
+    to {
+        transform: translate(-600px)
+    }
+}
+
+@keyframes opacity {
     from {
         opacity: 0
-        //margin-left: 100%;
-        //width: 300%;
     }
-
     to {
-        opacity: 1
-        //margin-left: 0%;
-        //width: 100%;
+        opacity: 1;
     }
 }
+
+

@@ -18,17 +18,24 @@ const propTypes = {
     detailEmail: PropTypes.func.isRequired,
     searchEmail: PropTypes.func.isRequired,
     fetchData: PropTypes.func.isRequired,
-    // loadMoreData: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
     isOpen: false,
 }
+// eslint-disable-next-line
+const checkDevice = () => window.matchMedia('only screen and (max-width: 580px)')
 
 class Inbox extends PureComponent {
     constructor(props) {
         super(props)
         this.timer = 0
+        this.refDetails = React.createRef()
+        this.componentDetail = null
+        this.state = {
+            isMobile: false,
+            isCollapsed: false,
+        }
     }
 
     componentWillMount= async () => {
@@ -37,16 +44,21 @@ class Inbox extends PureComponent {
     }
 
     componentDidMount = async () => {
-        // const { fetchData } = this.props
+        const { fetchData } = this.props
 
-        // this.timer = setInterval(async () => {
-        //  await fetchData()
-        // },
-        // 90000)
+        this.timer = setInterval(async () => {
+            await fetchData()
+        },
+        90000)
     }
 
     componentWillUnmount() {
         clearInterval(this.timer)
+    }
+
+    onEndAnimation = (e) => {
+        e.target.classList.remove('opacity')
+        this.componentDetail = e.target
     }
 
     setFilter = (filter) => {
@@ -67,6 +79,37 @@ class Inbox extends PureComponent {
         searchEmail(query)
     }
 
+    handleDetalEmail = async (id) => {
+        const { detailEmail } = this.props
+        detailEmail(id)
+
+        const isMobile = checkDevice()
+
+        if (isMobile.matches) {
+            this.setState(() => ({
+                isMobile: true,
+                isCollapsed: true,
+            }))
+        } else {
+            this.componentDetail.classList.add('opacity')
+            this.componentDetail = null
+        }
+    }
+
+    toggleSidebar = () => {
+        this.setState(prevState => ({
+            isCollapsed: !prevState.isCollapsed,
+        }))
+
+        const isMobile = checkDevice()
+
+        if (isMobile.matches) {
+            this.setState({
+                isMobile: true,
+            })
+        }
+    }
+
     render() {
         const {
             emails,
@@ -75,12 +118,15 @@ class Inbox extends PureComponent {
             countInbox,
             filter,
             isOpen,
-            detailEmail,
         } = this.props
+        const { isMobile, isCollapsed } = this.state
 
         return (
             <React.Fragment>
-                <div className="sidebar">
+                <div
+                    // eslint-disable-next-line
+                    className={isMobile ? !isCollapsed ? 'sidebar slideLeft' : 'sidebar slideRight' : 'sidebar'}
+                >
                     <HeaderSidebar
                         countInbox={countInbox}
                         title={filter}
@@ -94,13 +140,26 @@ class Inbox extends PureComponent {
                         error && <p> Sucedió un error al cargar los datos </p>
                     }
                     {
-                        (emails) && <EmailList data={emails} onClick={detailEmail} />
+                        (emails) && (
+                            <EmailList
+                                data={emails}
+                                onClick={this.handleDetalEmail}
+                            />
+                        )
 
                     }
                 </div>
                 {
                     isOpen
-                        && <Details />
+                        && (
+                            <Details
+                                ref={this.refDetails}
+                                isCollapsed={isCollapsed}
+                                isMobile={isMobile}
+                                toggleSidebar={this.toggleSidebar}
+                                endAnimation={this.onEndAnimation}
+                            />
+                        )
                 }
             </React.Fragment>
         )

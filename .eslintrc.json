@@ -32,6 +32,7 @@
         "import/no-named-as-default-member": 0,
         "no-restricted-syntax": 0,
         "import/no-unresolved": 0,
+        "no-nested-ternary": 0,
         "template-curly-spacing": [
             2,
             "always"

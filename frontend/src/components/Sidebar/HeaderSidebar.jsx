@@ -23,7 +23,7 @@ const HeaderSidebar = ({ countInbox, title, setFilter }) => (
             }
         </div>
         <div>
-            <select onChange={({ currentTarget }) => { setFilter(currentTarget.value) }}>
+            <select className="input__select" onChange={({ currentTarget }) => { setFilter(currentTarget.value) }}>
                 <option valu="--">Filter by</option>
                 <option value="INBOX">Inbox</option>
                 <option value="SPAM">Spam</option>

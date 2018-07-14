@@ -21,7 +21,7 @@ const Details = ({
     tag,
 }) => (
     <div className="container__details">
-        <p className="details__title"> {subject}</p>
+        <h2 className="details__title"> {subject}</h2>
         <div className="details__tags">
             <span>Tags</span><Tag text={tag} />
         </div>
@@ -29,17 +29,17 @@ const Details = ({
             <p>
                 { body }
             </p>
-        </div>
-        <div className="details__footer">
-            {
-                (attachements && attachements.length)
-                && <FontAwesomeIcon icon={faPaperclip} />
-            }
-            <input
-                type="button"
-                value="Replay"
-                className="button button__blue button__blue--big"
-            />
+            <div className="details__footer">
+                {
+                    (attachements && attachements.length)
+                    && <FontAwesomeIcon icon={faPaperclip} />
+                }
+                <input
+                    type="button"
+                    value="Replay"
+                    className="button button__blue button__blue--big"
+                />
+            </div>
         </div>
     </div>
 )

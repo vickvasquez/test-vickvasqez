@@ -7,7 +7,11 @@ const propTypes = {
     markAsSpam: PropTypes.func.isRequired,
     markAsUnRead: PropTypes.func.isRequired,
     deleteEmail: PropTypes.func.isRequired,
+    endAnimation: PropTypes.func.isRequired,
     detail: PropTypes.objectOf(PropTypes.array, PropTypes.string, PropTypes.bool).isRequired,
+    isMobile: PropTypes.bool.isRequired,
+    isCollapsed: PropTypes.bool.isRequired,
+    toggleSidebar: PropTypes.func.isRequired,
 }
 
 const Details = ({
@@ -15,12 +19,26 @@ const Details = ({
     markAsSpam,
     markAsUnRead,
     deleteEmail,
+    isMobile,
+    isCollapsed,
+    toggleSidebar,
+    endAnimation,
 }) => (
-    <div className="details">
+    <div
+        onAnimationEnd={endAnimation}
+        className={
+            isCollapsed
+                ? 'slideRightDetail'
+                : isMobile
+                    ? 'details slideLefttDetail'
+                    : 'details opacity'
+        }
+    >
         <HeaderDetails
             markAsSpam={() => { markAsSpam(detail.id) }}
             markAsUnRead={() => { markAsUnRead(detail.id) }}
             deleteEmail={() => { deleteEmail(detail.id) }}
+            toggleSidebar={toggleSidebar}
         />
         <Detail {...detail} />
     </div>
